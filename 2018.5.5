@@ -38,15 +38,43 @@ int my_strlen(const cahr *str)
 【功能描述】 ：第一个字符串被第二个字符串所覆盖
   
 *******************************************************************************************************************
-char * my_strlen(char *dst, const cahr *sor)
+char *my_strcpy(char *dest, const char *sor)
 {
-    char *temp = dst;
-    assert(str);
-    assert(dst);
+    char *temp = dest;
+    assert(sor);
+    assert(dest);
     while(*temp++ = *sor++)
     { 
              ;
     }
-    return dst;
+    return dest;
 }
 *******************************************************************************************************************
+
+2. 实现函数my_strncpy()
+ 
+【功能描述】 ：有个数限制字符串复制
+  
+*******************************************************************************************************************
+char *my_strncpy(char *dest, const char *sor,size_t count)
+{
+    int i = 0;
+    char *temp = dest;
+    assert(sor);
+    assert(dest);
+    while(count--)
+    {  
+       if(*sor == '\0';
+       {
+           return NULL;  
+       }
+       *temp++ = *sor++;
+    }
+    if(*temp != '\0')
+    {
+         *temp = '\0';
+    }
+    return dest;
+}
+*******************************************************************************************************************
+
