@@ -6,9 +6,10 @@ int main()
 {
 	
 	//testQueue();
-	testStack();
+	//testStack();
 	//testStackByTwoQueue();
 	//testQueueByTwoStack();
+	testInWithOut();
 	system("pause");
 	return 0;
 }

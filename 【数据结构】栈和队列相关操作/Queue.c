@@ -203,6 +203,10 @@ void testQueue()
 	QueuePush(&q, 3);
 	QueuePush(&q, 2);
 
+	printf("队列的大小：%d\n",QueueSize(&q));
+	printf("队首元素：%d\n", QueueFront(&q));
+
+
 	while (!QueueEmpty(&q))
 	{
 		printf("%d ", QueueFront(&q));

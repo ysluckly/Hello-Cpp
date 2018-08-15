@@ -68,7 +68,7 @@ int StackSize(Stack* pStack)
 }
 
 
-
+ //测试
 void testStack()
 {
 	Stack s;
@@ -78,7 +78,9 @@ void testStack()
 	StackPush(&s, 3);
 	StackPush(&s, 4);
 
-	
+	printf("栈的大小：%d\n",StackSize(&s));
+	printf("栈顶元素：%d\n", StackTop(&s));
+
 	while(!StackEmpty(&s))
 	{
 		printf("%d ", StackTop(&s));
