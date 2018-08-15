@@ -15,15 +15,12 @@ void StackInit(Stack* pStack)
 //Ïú»Ù
 void StackDestory(Stack* pStack)
 {
-	assert(pStack&&pStack->data);
-	if (pStack->data)
-	{
-		free(pStack->data);
-		pStack->data = NULL;
-		pStack->capacity = 0;
-		pStack->top = 0;
-	}
+	assert(pStack);
 
+	free(pStack->data);
+	pStack->data = NULL;
+	pStack->capacity = 0;
+	pStack->top = 0; 
 }
 
 //ÈëÕ»
@@ -32,9 +29,9 @@ void StackPush(Stack* pStack, DataType x)
 	assert(pStack);
 	if (pStack->top == pStack->capacity)
 	{
-		DataType* tmp = NULL;
-		tmp = (DataType*)realloc(pStack->data, sizeof(DataType)*(pStack->capacity) + 3);
-		assert(pStack->data);
+		DataType* tmp = NULL;				    
+		tmp = (DataType*)realloc(pStack->data, sizeof(DataType)*(pStack->capacity + 3));
+		assert(tmp);
 		pStack->data = tmp;
 		pStack->capacity += 3;
 
@@ -81,11 +78,12 @@ void testStack()
 	StackPush(&s, 3);
 	StackPush(&s, 4);
 
-	while (!StackEmpty(&s))
+	
+	while(!StackEmpty(&s))
 	{
 		printf("%d ", StackTop(&s));
 		StackPop(&s);
 	}
-
+	printf("\n");
 	StackDestory(&s);
 }

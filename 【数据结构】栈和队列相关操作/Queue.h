@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 #include <assert.h>
-#include <malloc.h>
+#include <stdlib.h>
 
 /**************************************************************
 *						    链式队列						  *
@@ -34,6 +34,8 @@ void QueuePush(Queue* pQueue, DataType x);
 void QueuePop(Queue* pQueue);
 //取队头元素
 DataType QueueTop(Queue* pQueue);
+//取队尾元素
+DataType QueueBack(Queue* pQueue);
 //判空
 int QueueEmpty(Queue* pQueue);
 //队的大小

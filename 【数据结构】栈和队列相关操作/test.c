@@ -7,7 +7,8 @@ int main()
 	
 	//testQueue();
 	testStack();
-
+	//testStackByTwoQueue();
+	//testQueueByTwoStack();
 	system("pause");
 	return 0;
 }

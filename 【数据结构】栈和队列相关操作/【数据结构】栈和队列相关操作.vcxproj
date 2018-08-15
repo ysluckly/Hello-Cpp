@@ -66,11 +66,13 @@
   <ItemGroup>
     <ClInclude Include="Queue.h" />
     <ClInclude Include="Stack.h" />
+    <ClInclude Include="Topic.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Queue.c" />
     <ClCompile Include="Stack.c" />
     <ClCompile Include="test.c" />
+    <ClCompile Include="Topic.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

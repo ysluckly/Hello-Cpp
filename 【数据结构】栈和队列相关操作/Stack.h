@@ -5,7 +5,7 @@
 ***************************************************************/
 #include <stdio.h>
 #include <assert.h>
-#include <malloc.h>
+#include <stdlib.h>
 
 typedef int DataType;
 typedef struct Stack
@@ -30,14 +30,8 @@ DataType SatckTop(Stack* pStack);
 int StackEmpty(Stack* pStack);
 //栈的大小
 int StackSize(Stack* pStack);
-
+//测试
 void testStack();
  
-
-
-
-/**************************************************************
-*						    链式栈							  *
-***************************************************************/
 
 #endif //__STACK_H__

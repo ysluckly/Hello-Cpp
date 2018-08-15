@@ -98,6 +98,7 @@ void QueueInit(Queue* pQueue)
 	pQueue->front = NULL;
 	pQueue->rear = NULL;
 }
+
 //销毁
 void QueueDestory(Queue* pQueue)
 {
@@ -111,21 +112,25 @@ void QueueDestory(Queue* pQueue)
 	}
 	pQueue->front = pQueue->rear = NULL;
 }
+
 QueueNode* BuyNode(DataType x)
 {
-	QueueNode* ptr = (DataType*)malloc(sizeof(DataType));
+	QueueNode* ptr = (QueueNode*)malloc(sizeof(QueueNode));
 	assert(ptr);
 	ptr->data = x;
 	ptr->pNext = NULL;
 	return ptr;
 }
+
 //入队
 void QueuePush(Queue* pQueue, DataType x)
 {
 	assert(pQueue);
 	if (pQueue->rear == NULL)
 	{
-		pQueue->front = pQueue->rear = BuyNode(x);
+		QueueNode* node = BuyNode(x);
+		 pQueue->rear = node;
+		 pQueue->front = pQueue->rear;
 	}
 	else
 	{
@@ -134,6 +139,7 @@ void QueuePush(Queue* pQueue, DataType x)
 		pQueue->rear = node;
 	}
 }
+
 //出队
 void QueuePop(Queue* pQueue)
 {
@@ -142,19 +148,35 @@ void QueuePop(Queue* pQueue)
 	free(pQueue->front);
 	pQueue->front = pCur;
 
+	if (pCur == NULL)
+	{
+		pQueue->rear = NULL;
+	}
+
 }
+
 //取队头元素
-DataType QueueTop(Queue* pQueue)
+DataType QueueFront(Queue* pQueue)
 {
 	assert(pQueue);
 	return pQueue->front->data;
 }
+
+//取队尾元素
+DataType QueueBack(Queue* pQueue)
+{
+	assert(pQueue);
+	return pQueue->rear->data;
+
+}
+
 //判空
 int QueueEmpty(Queue* pQueue)
 {
 	assert(pQueue);
-	return pQueue->front == NULL ? 0 : 1;
+	return pQueue->front == NULL;
 }
+
 //队的大小
 int QueueSize(Queue* pQueue)
 {
@@ -181,9 +203,9 @@ void testQueue()
 	QueuePush(&q, 3);
 	QueuePush(&q, 2);
 
-	while (QueueEmpty(&q))
+	while (!QueueEmpty(&q))
 	{
-		printf("%d ", QueueTop(&q));
+		printf("%d ", QueueFront(&q));
 		QueuePop(&q);
 	}
 
