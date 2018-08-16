@@ -25,7 +25,7 @@ void StackPush(Stack* pStack, DataType x);
 //出栈
 void StackPop(Stack* pStack);
 //取栈顶元素
-DataType SatckTop(Stack* pStack);
+DataType StackTop(Stack* pStack);
 //判空
 int StackEmpty(Stack* pStack);
 //栈的大小

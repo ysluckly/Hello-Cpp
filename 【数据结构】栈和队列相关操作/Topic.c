@@ -1,11 +1,13 @@
 #include "Topic.h"
 
 //////////////// 1.要求实现Min(返回最小值)的时间复杂度为O(1)////////////////////
+
+//方案一：
+
 /*通过封装一个结构体，结构体中第一个元素放值，第二个元素放最小值，
 将结构体放入到栈中，这样返回最小值的时候从栈顶取结构体，再从结构体中取出最小值*/
 
-
-//栈的初始化
+/*//栈的初始化
 void MStackInit(MinStack* ms)
 {
 	assert(ms);
@@ -62,6 +64,101 @@ MDataType GetMinData(MinStack* ms)
 {
 	assert(ms);
 	return StackTop(&ms->s).mindata;
+}*/
+
+//方案二 ：
+//构建两个栈，一个栈存储元素，另一个栈存储当前最小值
+
+void MinStackInit(MinStack* pms)
+{
+	assert(pms);
+	StackInit(&pms->s);
+	StackInit(&pms->mins);
+}
+void MinStackDestory(MinStack* pms)
+{
+	assert(pms);
+	StackDestory(&pms->s);
+	StackDestory(&pms->mins);
+
+}
+
+void MinStackPush(MinStack* pms, DataType x)
+{
+	assert(pms);
+	StackPush(&pms->s, x);
+	if (StackEmpty(&pms->mins) || StackTop(&pms->mins) >= x)
+	{
+		StackPush(&pms->mins, x);
+	}
+	
+}
+void MinStackPop(MinStack* pms)
+{
+	assert(pms);
+	if (StackTop(&pms->mins) == StackTop(&pms->s))
+	{
+		StackPop(&pms->mins);
+	}
+	StackPop(&pms->s);
+
+}
+int MinStackSize(MinStack* pms)
+{
+	assert(pms);
+	return StackSize(&pms->s);
+
+}
+int MinStackEmpty(MinStack* pms)
+{
+	assert(pms);
+	return StackEmpty(&pms->s);
+}
+DataType MinStackTop(MinStack* pms)
+{	
+	assert(pms);
+	return StackTop(&pms->s);
+
+
+}
+int MinStackMin(MinStack* pms)
+{
+	assert(pms);
+	return StackTop(&pms->mins);
+
+}
+
+void testmin()
+{
+	MinStack s;
+	MinStackInit(&s);
+
+	MinStackPush(&s, 1);
+	MinStackPush(&s, 2);
+	MinStackPush(&s, 0);
+	MinStackPush(&s, 0);
+	MinStackPush(&s, 0);
+	MinStackPush(&s, 8);
+	MinStackPush(&s, 0);
+
+	printf("大小：%d\n",MinStackSize(&s));
+	printf("栈顶元素：%d\n",MinStackTop(&s));
+	printf("最小值：%d\n",MinStackMin(&s));
+	MinStackPop(&s);
+
+	printf("大小：%d\n", MinStackSize(&s));
+	printf("栈顶元素：%d\n", MinStackTop(&s));
+	MinStackPop(&s);
+
+	printf("大小：%d\n", MinStackSize(&s));
+	printf("栈顶元素：%d\n", MinStackTop(&s));
+	MinStackPop(&s);
+
+	printf("大小：%d\n", MinStackSize(&s));
+	printf("栈顶元素：%d\n", MinStackTop(&s));
+
+	MinStackDestory(&s);
+
 }
 
 ///////////////////////////////2.两个栈实现队列////////////////////////////////
@@ -253,9 +350,9 @@ void testStackByTwoQueue()
 弹出序列要弹出的元素不在栈顶,所以无法弹出，所以就是非法弹出，否则继续重复
 上述操作，直到栈中的元素数目为0，即栈空，证明弹出序列合法*/
 
-int Check(int *stack_in, int *stack_out, int len_in, int len_out)
+int Check(int *in, int *out, int len_in, int len_out)
 {
-	Stack s;
+	/*Stack s;
 	StackInit(&s);
 	assert(stack_in && stack_out);
 	//两个序列长度不相等，不合法  
@@ -273,10 +370,41 @@ int Check(int *stack_in, int *stack_out, int len_in, int len_out)
 			StackPop(&s);
 			j++;
 		}
+	}*/
+
+	Stack s;
+	StackInit(&s);
+	assert(in && out);
+	//两个序列长度不相等，不合法  
+	if (len_in != len_out)
+		return 0;
+
+	int index = 0;
+	int outdex = 0;
+
+	while (index < len_in)
+	{
+		StackPush(&s, in[index]);
+		index++;
+		while (!StackEmpty(&s) && (StackTop(&s) == out[outdex]))
+		{
+			StackPop(&s);
+			outdex++;
+		}
+
 	}
 
 	//当所有出栈序列元素都匹配完之后，栈不为空，不合法
-	return (StackSize(&s)>0) ? 0 : 1;
+	if (StackEmpty(&s))
+	{
+		StackDestory(&s);
+		return 1;
+	}
+	else
+	{
+		StackDestory(&s);
+		return 0;
+	}
 }
 
 
@@ -296,7 +424,7 @@ void testInWithOut()
 
 
 /////////////////////////5.一个数组实现两个栈（共享栈）/////////////////////////////
-
+//方案一：
 void SharedStackInit(SharedStack* s)
 {
 	s->top1 = 0;
@@ -353,4 +481,155 @@ int SharedStackEmpty(SharedStack* s, int flag)
 		return 0 == s->top1;
 	else
 		return MAXSIZE - 1 == s->top2;
+}
+
+//方案二;
+void  SShareStackInit(SShareStack* pss)
+{
+	assert(pss);
+	pss->data = (SDataType*)malloc(sizeof(SDataType)* 4);
+	pss->capacity = 4;
+	pss->top1 = 0;
+	pss->top2 = 1;
+}
+void  SShareStackDestory(SShareStack* pss,int flag)
+{
+	assert(pss);
+	if (flag == 1)
+	{
+		pss->top1 = 0;
+		if (pss->top2 == 1)
+		{
+			free(pss->data);
+			pss->data = NULL;
+		}
+
+	}
+	else
+	{
+		pss->top2 = 1;
+		if (pss->top1 == 0)
+		{
+			free(pss->data);
+			pss->data = NULL;
+		}
+	}													   
+
+}
+
+SDataType* AddCapacity(SShareStack* pss)
+{
+	assert(pss);
+	SDataType* tmp = (SDataType*)realloc(pss->data, sizeof(SDataType)*(pss->capacity + 4));
+	assert(tmp);
+	pss->data = tmp;
+	pss->capacity += 4;
+	printf("增容成功\n");
+
+	return pss->data;
+
+}
+void  SShareStackPush(SShareStack* pss, SDataType x, int flag)
+{
+	assert(pss&&((flag ==1)||(flag ==2)));
+
+	if (flag == 1)
+	{
+		if (pss->top1 == pss->capacity - 2)
+		{
+			pss->data=AddCapacity(pss);
+			//AddCapacity(pss);
+		}
+		pss->data[pss->top1] = x;
+		pss->top1 += 2;
+	}
+	else
+	{
+		if (pss->top2 == pss->capacity - 1)
+		{
+			pss->data=AddCapacity(pss);
+			//AddCapacity(pss);
+		}
+		pss->data[pss->top2] = x;
+		pss->top2 += 2;
+	}
+
+}
+void  SShareStackPop(SShareStack* pss, int flag)
+{
+	assert(pss && ((flag == 1) || (flag == 2)));
+
+	if (flag == 1)
+	{
+		if (pss->top1 == 0)
+			return;
+		else
+			pss->top1 -= 2;
+
+	}
+	else
+	{
+		if (pss->top2 == 1)
+			return;
+		else
+			pss->top2 -= 2;
+
+	}
+}
+int  SShareStackSize(SShareStack* pss, int flag)
+{
+	assert(pss && ((flag == 1) || (flag == 2)));
+	if (flag == 1)
+		return pss->top1/2;
+	else
+		return pss->top2/2;
+
+}
+SDataType  SShareStackTop(SShareStack* pss, int flag)
+{
+	assert(pss && ((flag == 1) || (flag == 2)));
+	if (flag == 1)
+		return pss->data[pss->top1-2];
+	else
+		return pss->data[pss->top2-2];
+
+
+}
+int  SShareStackEmpty(SShareStack* pss, int flag)
+{
+		assert(pss&&((flag ==1)||(flag ==2)));
+		if (flag == 1)
+			return pss->top1 == 0;
+		else
+			return pss->top2 == 1;
+
+}
+void testShareStack()
+{
+	SShareStack s;
+	SShareStackInit(&s);
+
+	SShareStackPush(&s, 3, 1);
+	SShareStackPush(&s, 4, 2);
+	SShareStackPush(&s, 5, 1);
+	SShareStackPush(&s, 1, 2);
+	SShareStackPush(&s, 5, 1);
+	SShareStackPush(&s, 1, 2);
+
+	printf("大小：%d %d\n", SShareStackSize(&s, 1), SShareStackSize(&s, 2));
+	printf("栈顶：%d %d\n", SShareStackTop(&s, 1), SShareStackTop(&s, 2));
+	printf("判空：%d %d\n", SShareStackEmpty(&s, 1), SShareStackEmpty(&s, 2));
+
+	SShareStackPop(&s, 1);
+	SShareStackPop(&s, 2);
+
+	printf("大小：%d %d\n", SShareStackSize(&s, 1), SShareStackSize(&s, 2));
+	printf("栈顶：%d %d\n", SShareStackTop(&s, 1), SShareStackTop(&s, 2));
+	printf("判空：%d %d\n", SShareStackEmpty(&s, 1), SShareStackEmpty(&s, 2));
+	
+
+	SShareStackDestory(&s,1);
+	SShareStackDestory(&s, 2);
+
+
 }

@@ -9,7 +9,10 @@ int main()
 	//testStack();
 	//testStackByTwoQueue();
 	//testQueueByTwoStack();
-	testInWithOut();
+	//testInWithOut();
+	//testmin();
+	testShareStack();
+
 	system("pause");
 	return 0;
 }

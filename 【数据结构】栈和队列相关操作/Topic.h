@@ -11,8 +11,8 @@
 ///////////////////////////////////////////////////////////////////////
 //1.实现一个栈，要求实现Push(出栈)、pop(入栈)、Min(返回最小值)的时间复杂度为O(1)
 
-
-typedef int MDataType;
+//方案一
+/*typedef int MDataType;
 //结构体，第一个元素放值，第二个元素放最小值
 typedef struct SElem
 {
@@ -39,6 +39,27 @@ MDataType MStackTop(MinStack* ms);
 MDataType GetMinData(MinStack* ms);
 //栈的大小
 MDataType MStackSize(MinStack* ms);
+*/
+
+//方案二 ：
+//构建两个栈，一个栈存储元素，另一个栈存储当前最小值
+
+typedef struct MinStack
+{
+	Stack s;
+	Stack mins;
+}MinStack;
+
+void MinStackInit(MinStack* pms);
+void MinStackDestory(MinStack* pms);
+
+void MinStackPush(MinStack* pms, DataType x);
+void MinStackPop(MinStack* pms);
+int MinStackSize(MinStack* pms);
+int MinStackEmpty(MinStack* pms);
+DataType MinStackTop(MinStack* pms);
+int MinStackMin(MinStack* pms);
+void testmin();
 
 
 ///////////////////////////////////////////////////////////////////////
@@ -88,7 +109,8 @@ void testInWithOut();
 // 5.一个数组实现两个栈（共享栈）
 
 #define MAXSIZE 10
-//利用数组实现一个共享栈，第一个栈是从前往后入栈，第二栈的元素从后往前放
+//方案一：
+//利用数组实现一个静态共享栈，第一个栈是从前往后入栈，第二栈的元素从后往前放
 typedef struct SharedStack
 {
 	int data[MAXSIZE];
@@ -96,7 +118,7 @@ typedef struct SharedStack
 	int top2;	  //右栈顶
 }SharedStack;
 
-//flag为判断区分两个栈 ，规定1为左栈，0为右栈
+//flag为判断区分两个栈 ，规定1为左栈，2为右栈
 
 void SharedStackInit(SharedStack* s);
 
@@ -110,5 +132,29 @@ int SharedStackTop(SharedStack* s, int flag);
 int SharedStackSize(SharedStack* s, int flag);
 // 检测栈是否为空 
 int SharedStackEmpty(SharedStack* s, int flag);
+
+//方案二：
+//利用数组实现一个动态共享栈【奇偶共享栈】
+
+typedef int SDataType;
+typedef struct SShareStack
+{
+	SDataType* data;
+	int top1;
+	int top2;
+	int capacity;
+
+}SShareStack;
+
+void  SShareStackInit(SShareStack* pss);
+void  SShareStackDestory(SShareStack* pss,int flag);
+
+void  SShareStackPush(SShareStack* pss,SDataType x,int flag);
+void  SShareStackPop(SShareStack* pss, int flag);
+int  SShareStackSize(SShareStack* pss, int flag);
+SDataType  SShareStackTop(SShareStack* pss, int flag);
+int  SShareStackEmpty(SShareStack* pss, int flag);
+void testShareStack();
+
 
 #endif // __TOPIC_H__
