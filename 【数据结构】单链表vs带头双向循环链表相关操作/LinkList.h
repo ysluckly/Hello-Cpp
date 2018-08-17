@@ -8,7 +8,7 @@
 
 typedef int DataType;
 
-//不带头结点单链表
+//不带头结点非循环单链表
 typedef struct Node
 {
 	DataType data;
@@ -43,17 +43,11 @@ void ReMove_OP(pList* pplist, DataType d);
 //删除指定所有元素
 void ReMoveAll(pList* pplist, DataType d);
 
-
 //查找
 pNode Find(pList pplist,DataType d);
 //清空
 void Clear(pList* pplist);
 //链表大小
 int Size(pList pplist);
-
- 
-
-
-
 
 #endif//__LIST_H__

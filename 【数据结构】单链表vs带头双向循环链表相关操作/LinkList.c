@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
 #include "LinkList.h"
-
+//////////////////////////////////不带头非循环单链表//////////////////////////////////////////
 //初始化
 //改变传地址，不改变传值
 void InitList(pList* pplist)

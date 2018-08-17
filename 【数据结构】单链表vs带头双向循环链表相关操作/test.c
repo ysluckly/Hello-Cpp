@@ -177,7 +177,7 @@ void testremoveall()
 }
 int main()
 {
-	InitList(&plist);
+	//InitList(&plist);
 	//testpushback();
 	//testpopback();
 	//testpushfront();
@@ -186,16 +186,16 @@ int main()
 	//testerase();
 	//testfind();
 	//testremove();
-	testremoveall();
+	//testremoveall();
 	//testclear();
 	//testsize();
 
+	testDLinkList();
 
 
 
 
-
-	DestoryList(&plist);
+	//DestoryList(&plist);
 	system("pause");
 	return 0;
 }
