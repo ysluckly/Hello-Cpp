@@ -34,6 +34,8 @@ void DLinkListPopFront(DLinkList* pHead);
 DLinkList DLinkListFind(DLinkList* pHead, DataType x);
 void DLinkListInsert(DLinkList* pHead, DLinkList pos, DataType x);
 void DLinkListErase(DLinkList* pHead, DLinkList pos);
+void DLinkListReMove(DLinkList* pHead, DataType x);
+void DLinkListReMoveAll(DLinkList* pHead, DataType x);
 									  
 int DLinkListSize(DLinkList* pHead);
 int DLinkListEmpty(DLinkList* pHead);

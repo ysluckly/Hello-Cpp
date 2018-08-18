@@ -107,6 +107,47 @@ void DLinkListErase(DLinkList* pHead, DLinkList pos)
 		pos = NULL;
 	}
 }
+void DLinkListReMove(DLinkList* pHead, DataType x)
+{
+	assert(pHead);
+	DLinkList pCur = (*pHead)->pNext;
+	while (pCur != (*pHead))
+	{
+		if (pCur->data == x)
+		{
+			DLinkList tmp = pCur->pPrev;
+			tmp->pNext = pCur->pNext;
+			pCur->pNext->pPrev = tmp;
+			free(pCur);
+			pCur = NULL;
+			return;
+		}
+		else
+		{
+			pCur = pCur->pNext;
+		}
+	}
+}
+void DLinkListReMoveAll(DLinkList* pHead, DataType x)
+{
+	assert(pHead);
+	DLinkList pCur = (*pHead)->pNext;
+	while (pCur != (*pHead))
+	{
+		if (pCur->data == x)
+		{
+			DLinkList tmp = pCur->pPrev;
+			tmp->pNext = pCur->pNext;
+			pCur->pNext->pPrev = tmp;
+			free(pCur);
+			pCur = tmp->pNext;
+		}
+		else
+		{
+			pCur = pCur->pNext;
+		}
+	}
+}
 
 int DLinkListSize(DLinkList* pHead)
 {
@@ -147,8 +188,12 @@ void testDLinkList()
 
 	DLinkListPushBack(&dl, 4);
 	DLinkListPushBack(&dl, 5);
+	DLinkListPushBack(&dl, 5);
+	DLinkListPushBack(&dl, 5);
 	DLinkListPushBack(&dl, 6);
 	DLinkListPushBack(&dl, 7);
+	DLinkListPushBack(&dl, 5);
+	DLinkListPushBack(&dl, 5);
 	DLinkListPushBack(&dl, 8);
 
 	PrintDLinkList(dl);
@@ -192,9 +237,13 @@ void testDLinkList()
 	}
 	printf("Îª¿Õ£º %d\n", DLinkListEmpty(&dl));
 
+	DLinkListReMove(&dl, 5);
+	PrintDLinkList(dl);
+
+	DLinkListReMoveAll(&dl, 5);
+	PrintDLinkList(dl);
+
+
 
 	DLinkListDestory(&dl);
-
-
-
 }
