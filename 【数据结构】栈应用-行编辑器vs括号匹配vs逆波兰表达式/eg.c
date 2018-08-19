@@ -154,7 +154,66 @@ void testIsOk()
 
 (8) 依次弹出S2中的元素并输出，结果的逆序即为中缀表达式对应的后缀表达式（转换为前缀表达式时不用逆序）。*/
 
-
+void trans(SElemType str[], SElemType rpn[])
+{
+	i = 0, t = 0;
+	ch = str[i++];
+	while (ch != '\0')
+	{
+		switch (ch)
+		{
+		case '(': Push(op, ch); break;
+		case ')': while (GetTop(op) != '(')
+		{
+					  rpn[t] = GetTop(op);
+					  Pop(op);
+					  t++;
+		}
+				  op.top--;//此处必须再次进行--运算，才能忽略已经进入的‘（’ 
+				  break;
+		case '+':
+		case '-':
+			while (op.top != op.base && GetTop(op) != '(')
+			{
+				rpn[t] = GetTop(op);
+				Pop(op);
+				t++;
+			}
+			Push(op.ch);
+			break;
+		case '*':
+		case '/':
+			while (GetTop(op)'*' || GetTop(op) == '/')
+			{
+				rpn[t] = GetTop(op);
+				Pop(op);
+				t++;
+			}
+			Push(op.ch);
+			break;
+		case ' ':break;
+		default:
+			while (ch >= '0'&&ch <= '9')
+			{
+				rpn[t] = ch;
+				t++;
+				ch = str[i];
+				i++;
+			}
+			i--;
+			rpn[t] = '#'; t++;
+		}//switch
+		ch = str[i];
+		i++;
+	}//while
+	while (op.top != op.base)
+	{
+		rpn[t] = GetTop(op);
+		t++;
+		Pop(op);
+	}//while
+	rpn[t] = '\0';
+}//trans
 
 
 //2.应用两个栈，对后缀进行计算
@@ -175,3 +234,42 @@ void testIsOk()
 (6) 将7入栈
 
 (7) 最后是-运算符，因此弹出7和28,计算出28-7=21，由此得出最终结果。*/
+int value(char rpn[])
+{
+	t = 0, ch = rpn[t], t++;
+	while (ch != '\0')
+	{
+		switch (ch)
+		{
+		case '+': m = Pop(st); n = Pop(st);
+			Push(st, n + m);
+			break;
+		case '-': m = Pop(st); n = Pop(st);
+			Push(st, n - m);
+			break;
+		case '*': m = Pop(st); n = Pop(st);
+			Push(st, n*m);
+			break;
+		case '/': if (GetTop(st) != 0)
+		{
+					  m = Pop(st); n = Pop(st);
+					  Push(st, n / m); break;
+		}
+				  else
+				  {
+					  printf("\n除0错误！\n");
+					  exit(0);
+				  }
+		default: d = 0;
+			while (ch >= '0'&&ch <= '9')
+			{
+				d = 10 * d + ch - '0';
+				ch = rpn[t];
+				t++;
+			}
+			Push(st, d);
+		}//switch
+		ch = rpn[t]; t++;
+	}//while
+	return GetTop(st);
+}//value
