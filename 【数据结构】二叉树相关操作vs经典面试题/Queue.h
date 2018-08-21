@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 
 /**************************************************************
@@ -34,7 +35,7 @@ void QueuePush(Queue* pQueue, DataType x);
 //出队
 void QueuePop(Queue* pQueue);
 //取队头元素
-DataType QueueTop(Queue* pQueue);
+DataType QueueFront(Queue* pQueue);
 //取队尾元素
 DataType QueueBack(Queue* pQueue);
 //判空

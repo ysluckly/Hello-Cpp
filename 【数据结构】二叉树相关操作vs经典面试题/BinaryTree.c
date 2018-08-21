@@ -100,9 +100,94 @@ void BinaryTreeLevelSearch(pBTNode root)
 }
 
 //前中后非递归遍历
-void BinaryTreePrevSearch_OP(pBTNode root);
-void BinaryTreeMiddleSearch_OP(pBTNode root);
-void BinaryTreeLastSearch_OP(pBTNode root);
+//先访问每个结点（pCur&&pCur->pLeft）在压栈，，然后将右子树看成小型二叉树进行相同操作
+void BinaryTreePrevSearch_OP(pBTNode root)
+{
+	Stack s;
+	BTNode* pCur = root;
+	StackInit(&s);
+
+	if (root == NULL)
+		return;
+	//当前指针不为空或者栈不为空就应该继续
+	while (pCur||!StackEmpty(&s))
+	{
+		while (pCur)
+		{
+			printf("%c ",pCur->data);
+			StackPush(&s,pCur);
+			pCur = pCur->pLeft;
+		}
+		pBTNode top = StackTop(&s);
+		StackPop(&s);
+		pCur = top->pRight;
+
+	}
+	
+}
+//每个结点（pCur&&pCur->pLeft）先压栈再访问，然后将右子树看成小型二叉树进行相同操作
+void BinaryTreeMiddleSearch_OP(pBTNode root)
+{
+	Stack s;
+	SatckInit(&s);
+
+	pBTNode pCur = root;
+	if (root == NULL)
+		return;
+	//当前指针不为空或者栈不为空就应该继续
+	while (pCur || !StackEmpty(&s))
+	{
+		while (pCur)
+		{
+			StackPush(&s, pCur);
+			pCur = pCur->pLeft;
+		}
+		pBTNode top = StackTop(&s);
+		printf("%c   ",top->data);
+		StackPop(&s);
+		pCur = top->pRight;
+	}
+}
+//当根节点存在，先使根节点入栈，若存在左子树，使左子树入栈，直到左子树的左子树为空停止；
+//此时取栈顶top元素，判断栈顶元素的右子树top->right是否为空，若为空直接打印栈顶元素；
+//若不为空,再以右子树为根节点继续上述判断(入栈，取栈顶等)；
+//（此处假设top->right无左右子树）那么此节点会先入栈；
+//入栈完毕后得知它的左子树为空，当即会判断右子树，右子树为空，打印栈顶元素，出栈。
+//此时到达栈顶top，即打印top；但是应该加一个打印判断条件(top->right == ?),这个？就是top右子树；
+//综上：在每次打印完毕后，将此节点用pre标记起来，即满足top->tight == pre即可！！！
+//），的的pre记录上次栈顶的位置，
+void BinaryTreeLastSearch_OP(pBTNode root)
+{
+	Stack s;
+	pBTNode pCur = root;
+	StackInit(&s);
+	if (root == NULL)
+		return;
+	//当前指针不为空或者栈不为空就应该继续
+	while (pCur || !StackEmpty(&s))
+	{
+		while (pCur)
+		{
+			StackPush(&s, pCur);
+			pCur = pCur->pLeft;
+		}
+
+		pBTNode tmp = StackTop(&s);
+		pBTNode pre = NULL;
+
+		if (tmp->pRight == NULL||tmp->pRight == pre)
+		{
+			printf("%c ",tmp);
+			StackPop(&s);
+			pre = tmp;
+		}
+		else
+		{
+			pCur = tmp->pRight;
+
+		}
+	}
+}
 
 //二叉树的结点个数
 int BinaryTreeNodeSize(pBTNode root)
@@ -175,24 +260,6 @@ bool BinaryTreeComplete(pBTNode root)
 	{
 		pBTNode tmp = QueueFront(&q);
 		QueuePop(&q);
-
-		/*if (tmp->pLeft&&tmp->pRight)
-		{
-			QueuePop(&q);
-			QueuePush(&q, tmp->pLeft);
-			QueuePush(&q, tmp->pRight);
-		}
-		else if(tmp->pLeft)
-		{
-			if (tmp->pLeft->pLeft || tmp->pLeft->pRight)
-				return false;
-			QueuePop(&q);
-			QueuePush(&q,tmp->pLeft);
-		}
-		else if (tmp->pRight)
-		{
-			return false;
-		} */
 		if (tmp == NULL)
 		{
 			while (!QueueEmpty(&q))
@@ -211,7 +278,6 @@ bool BinaryTreeComplete(pBTNode root)
 			QueuePush(&q, tmp->pRight);
 		}
 	}
-	return true;
 }
 //获取一个结点双亲结点
 pBTNode GetBinaryTreeNodeParent(pBTNode root,BTDataType x)
@@ -219,8 +285,18 @@ pBTNode GetBinaryTreeNodeParent(pBTNode root,BTDataType x)
 	pBTNode ret;
 	if (root == NULL)
 		return NULL;
-	if (root->pLeft->data == x|| root->pRight->data == x)
-		return root;
+	if (root->pLeft)
+	{
+		if (root->pLeft->data == x)
+			return root;
+
+	}
+	if (root->pRight)
+	{
+		if (root->pRight->data == x)
+			return root;
+
+	}
 	ret = GetBinaryTreeNodeParent(root->pLeft, x);
 	if (ret)
 		return ret;
@@ -231,27 +307,53 @@ pBTNode GetBinaryTreeNodeParent(pBTNode root,BTDataType x)
 	
 }
 //获取一个结点的左孩子结点
-pBTNode GetBinaryTreeNodeLeftChild(pBTNode root)
+pBTNode GetBinaryTreeNodeLeftChild(pBTNode root, BTDataType x)
 {
+	pBTNode ret = NULL;
+
 	if (root == NULL)
 	{
 		return NULL;
 	}
-	if (root->pLeft)
-		return root->pLeft;
+	ret = BinaryTreeFind(root,x);
+	if (ret->pLeft)
+		return ret->pLeft;
 }
 //获取一个结点的右孩子结点
-pBTNode GetBinaryTreeNodeRightChild(pBTNode root)
+pBTNode GetBinaryTreeNodeRightChild(pBTNode root, BTDataType x)
 {
+
+	pBTNode ret = NULL;
 
 	if (root == NULL)
 	{
 		return NULL;
 	}
-	if (root->pRight)
-		return root->pRight;
+	ret = BinaryTreeFind(root, x);
+	if (ret->pRight)
+		return ret->pRight;
 }
 
+//求二叉树的镜像(递归&非递归)
+void BinaryTreeMirror(pBTNode root)
+{
+	if (NULL == root)
+		return;
+	if (root->pLeft == NULL&&root->pRight == NULL)
+		return;
+	pBTNode tmp = root->pLeft;
+	root->pLeft = root->pRight;
+	root->pRight = tmp;
+
+	if (root->pLeft)
+		BinaryTreeMirror(root->pLeft);
+	if (root->pRight)
+		BinaryTreeMirror(root->pRight);
+}
+void BinaryTreeMirror_OP(pBTNode root)
+{
+
+}
 void testBinaryTreeNode()
 {
 	int i = 0;
@@ -291,13 +393,25 @@ void testBinaryTreeNode()
 
 	Pret = GetBinaryTreeNodeParent(root, 'B');
 	if (Pret)
-		printf("%c \n", Pret->data);
+		printf("双亲结点 %c \n", Pret->data);
 	else
 		printf("不存在\n");
 
 	Pret = GetBinaryTreeNodeParent(root, 'A');
 	if (Pret)
-		printf("%c \n", Pret->data);
+		printf("双亲结点  %c \n", Pret->data);
+	else
+		printf("不存在\n");
+
+	Pret = GetBinaryTreeNodeParent(root, 'E');
+	if (Pret)
+		printf("双亲结点  %c \n", Pret->data);
+	else
+		printf("不存在\n");
+
+	Pret = GetBinaryTreeNodeRightChild(root,'C');
+	if (Pret)
+		printf("右结点  %c \n", Pret->data);
 	else
 		printf("不存在\n");
 

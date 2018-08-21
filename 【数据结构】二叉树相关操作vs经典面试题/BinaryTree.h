@@ -1,11 +1,8 @@
 #ifndef __BINARY_H__
 #define __BINARY_H__
 
-#include <stdio.h>
-#include <assert.h>
-#include <stdlib.h>
-#include <stdbool.h>
 #include "Queue.h"
+#include "Stack.h"
 
 typedef char BTDataType;
 typedef struct BinaryTreeNode
@@ -16,7 +13,7 @@ typedef struct BinaryTreeNode
 }BTNode,*pBTNode;
 
 
-///////////////////////////////二叉树经典相关操作////////////////////////////////
+///////////////////////////////二叉树经典相关操作与经典面试题////////////////////////////////
 
 //创建二叉树
 pBTNode BinaryTreeCreat(char* arr,int n,int* p);
@@ -55,10 +52,10 @@ pBTNode GetBinaryTreeNodeLeftChild(pBTNode root);
 //获取一个结点的右孩子结点
 pBTNode GetBinaryTreeNodeRightChild(pBTNode root);
 
-/////////////////////////////////二叉树经典面试题////////////////////////////////
-
 //求二叉树的镜像(递归&非递归)
-//判断一颗二叉树是否为完全二叉树（层次遍历变形）
+void BinaryTreeMirror(pBTNode root);
+void BinaryTreeMirror_OP(pBTNode root)
+
 
 void testBinaryTreeNode();
 
