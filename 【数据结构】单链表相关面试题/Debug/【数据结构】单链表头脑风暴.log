@@ -1,15 +1,21 @@
-﻿生成启动时间为 2018/8/17 23:46:02。
-     1>项目“F:\HomeWork\bit_数据结构\【数据结构】单链表头脑风暴\【数据结构】单链表头脑风暴\【数据结构】单链表头脑风暴.vcxproj”在节点 2 上(Build 个目标)。
+﻿生成启动时间为 2018/8/20 20:12:37。
+     1>项目“F:\HomeWork\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\【数据结构】单链表头脑风暴.vcxproj”在节点 2 上(Build 个目标)。
      1>ClCompile:
          E:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TC /analyze- /errorReport:prompt LinkPractice.c
          LinkPractice.c
-     1>f:\homework\bit_数据结构\【数据结构】单链表头脑风暴\【数据结构】单链表头脑风暴\linkpractice.c(55): warning C4013: “BuyNode”未定义；假设外部返回 int
-     1>f:\homework\bit_数据结构\【数据结构】单链表头脑风暴\【数据结构】单链表头脑风暴\linkpractice.c(55): warning C4047: “=”:“pNode”与“int”的间接级别不同
-     1>f:\homework\bit_数据结构\【数据结构】单链表头脑风暴\【数据结构】单链表头脑风暴\linkpractice.c(114): warning C4047: “=”:“pNode”与“int”的间接级别不同
-     1>f:\homework\bit_数据结构\【数据结构】单链表头脑风暴\【数据结构】单链表头脑风暴\linkpractice.c(224): error C2040: “BuyNode”:“pNode (DataType)”与“int ()”的间接寻址级别不同
-     1>f:\homework\bit_数据结构\【数据结构】单链表头脑风暴\【数据结构】单链表头脑风暴\linkpractice.c(242): warning C4047: “=”:“pNode”与“int”的间接级别不同
-     1>已完成生成项目“F:\HomeWork\bit_数据结构\【数据结构】单链表头脑风暴\【数据结构】单链表头脑风暴\【数据结构】单链表头脑风暴.vcxproj”(Build 个目标)的操作 - 失败。
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(55): warning C4013: “BuyNode”未定义；假设外部返回 int
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(55): warning C4047: “=”:“pNode”与“int”的间接级别不同
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(114): warning C4047: “=”:“pNode”与“int”的间接级别不同
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(223): error C2040: “BuyNode”:“pNode (DataType)”与“int ()”的间接寻址级别不同
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(241): warning C4047: “=”:“pNode”与“int”的间接级别不同
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(601): warning C4133: “=”: 从“pList”到“ComplexNode *”的类型不兼容
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(615): warning C4133: “=”: 从“pList”到“ComplexNode *”的类型不兼容
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(627): warning C4133: “=”: 从“pList”到“ComplexNode *”的类型不兼容
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(643): warning C4098: “Union”:“void”函数返回值
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(661): error C2040: “Union”:“pNode (pList,pList)”与“void (pList,pList)”的间接寻址级别不同
+     1>f:\homework\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\linkpractice.c(663): error C2040: “Union”:“pNode (pList,pList)”与“void (pList,pList)”的间接寻址级别不同
+     1>已完成生成项目“F:\HomeWork\bit_数据结构\【数据结构】单链表相关面试题\【数据结构】单链表相关面试题\【数据结构】单链表头脑风暴.vcxproj”(Build 个目标)的操作 - 失败。
 
 生成失败。
 
-已用时间 00:00:01.63
+已用时间 00:00:01.57

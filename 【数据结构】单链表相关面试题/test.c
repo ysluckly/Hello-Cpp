@@ -163,11 +163,11 @@ void testfindrevers()
 void testiswithcross()
 {
 	pNode plist1 = NULL;
-	PushBack(&plist, 2);
-	PushBack(&plist, 3);
-	PushBack(&plist, 5);
-	PushBack(&plist, 8);
-	PushBack(&plist, 9);
+	PushBack(&plist1, 2);
+	PushBack(&plist1, 3);
+	PushBack(&plist1, 5);
+	PushBack(&plist1, 8);
+	PushBack(&plist1, 9);
 	PrintList(plist);
 
 	pNode tmp = Find(plist, 5);
@@ -243,9 +243,9 @@ int main()
 	//testfindrevers();
 	//testiswithcross();			   //循环链表，销毁应该先断开链表
 	//testcross();
+	
 
-
-	//DestoryList(&plist);
+	DestoryList(&plist);
 	system("pause");
 	return 0;
 }

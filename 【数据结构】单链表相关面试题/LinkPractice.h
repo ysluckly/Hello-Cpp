@@ -15,6 +15,13 @@ typedef struct Node
 	struct Node* pNext;
 }Node, *pNode,*pList;
 
+typedef struct ComplexNode
+{
+	DataType data;
+	struct ComplexNode* pNext;
+	struct ComplexNode* pRandom;
+}ComplexNode;
+
 ///////////////////////////////链表接口实现/////////////////////////////////////////
 
 //初始化
@@ -65,6 +72,15 @@ pNode CrossIn(pList plist, pList pMeet);
 //判断两单链表是否相交？若相交，求交点
 int CheckCross(pList plist1, pList plist2);
 pNode GetCrossNode(pList plist1, pList plist2);
+//复杂链表复制
+ComplexNode* ComplexListCopy(ComplexNode head);
+
+//两个单链表的交集
+void Union(pList plist1, pList plist2);
+//两个单链表的差集
+void Difference(pList* plist1, pList plist2);
+//两个单链表的并集
+void Togeter(pList* plist1, pList plist2);
 
 
 

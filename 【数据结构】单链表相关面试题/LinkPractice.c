@@ -4,7 +4,7 @@
 
 
 
-/////////////////////////////单链表接口///////////////////////////////////
+////////////////////////////////////////////单链表接口/////////////////////////////////////
 
 //初始化
 //改变传地址，不改变传值
@@ -156,7 +156,7 @@ pNode Find(pList pplist, DataType d)
 
 
 }
-//////////////////////////////单链表面试题/////////////////////////////////////// 
+////////////////////////////////////////////单链表面试题/////////////////////////////////////// 
 
 //逆序打印单链表（递归）
 void ReversPrintLinkList(pList plist)
@@ -190,7 +190,6 @@ void ReversPrintLinkList_OP(pList plist)
 		return;
 	}
 
-	
 	while (plist != pTail)
 	{
 		pCur = plist;
@@ -354,7 +353,7 @@ void BubbleSort(pList* pplist)
 				DataType tmp = pCur->data;
 				pCur->data = pTmp->data;
 				pTmp->data = tmp;
-				flag = 0;
+				flag = 0;	 
 			}
 			pCur = pTmp;
 			pTmp = pTmp->pNext;
@@ -367,23 +366,18 @@ void BubbleSort(pList* pplist)
 //合并两个有序单链表
 pNode Merge(pList plist1, pList plist2)
 {
-	pNode pNewList = NULL;
+	
 	pNode pCur = NULL;
 
-	if ((NULL == plist1) || (NULL == plist2))
-		return (NULL == plist1) ? plist2 : plist1;
+	if (NULL == plist1)
+		return plist2;
+	if (NULL == plist2)
+		return plist1;
+
 	if (plist1 == plist2)
 		return NULL;
-	if (plist1->data > plist2->data)
-	{
-		pNewList = plist2;
-		plist2 = plist2->pNext;
-	}
-	else
-	{
-		pNewList = plist1;
-		plist1 = plist1->pNext;
-	}
+
+	pNode pNewList = (pNode)malloc(sizeof(Node));
 	pCur = pNewList;
 	while (plist1&&plist2)
 	{
@@ -407,30 +401,37 @@ pNode Merge(pList plist1, pList plist2)
 	{
 		pCur->pNext = plist2;
 	}
-	return pNewList;
+	return pNewList->pNext;
 }
 
 //合并两个有序单链表:递归
 pNode Merge_OP(pList plist1, pList plist2)
 {
-	pNode pNewList = NULL;
-	
-	if ((NULL == plist1) || (NULL == plist2))
-		return (NULL == plist1) ? plist2 : plist1;
+	pNode pNewList = (pNode)malloc(sizeof(Node));
+
+	pNode pCur = pNewList;
+
+
+	if (NULL == plist1)
+		return plist2;
+	if (NULL == plist2)
+		return plist1;
+
 	if (plist1 == plist2)
 		return NULL;
+
 	if (plist1->data > plist2->data)
 	{
-		pNewList = plist2;
-		pNewList->pNext = Merge_OP(plist1, plist2->pNext);
+		 
+		pCur->pNext = Merge_OP(plist1, plist2->pNext);
 	}
 	else
 	{
-		pNewList = plist1;
-		pNewList->pNext = Merge_OP(plist1->pNext, plist2);
+		 
+		pCur->pNext = Merge_OP(plist1->pNext, plist2);
 
 	}
-	return pNewList;
+	return pNewList->pNext;
 
 }
 
@@ -582,27 +583,122 @@ pNode GetCrossNode(pList plist1, pList plist2)
 	}
 	return pCur1;
 
+}
+//复杂链表复制
 
+ComplexNode* ComplexListCopy(ComplexNode* head)
+{
+	ComplexNode* pOldList = NULL;
+	ComplexNode* pNewList = NULL;
+	ComplexNode* pNewHead = NULL;
+
+	if (head == NULL)
+		return NULL;
+	pOldList = head;
+	//每个结点后边链接一个与自身一致的结点
+	while (pOldList)
+	{
+		ComplexNode* tmp = (ComplexNode*)malloc(sizeof(ComplexNode));
+		tmp->data = pOldList->data;
+		tmp->pNext = NULL;
+		tmp->pRandom = NULL;
+
+		tmp->pNext = pOldList->pNext;
+		pOldList->pNext = tmp;
+		pOldList = tmp->pNext;
+	}
+	//对新结点随机域赋值
+	pOldList = head;
+	while (pOldList)
+	{
+		pNewList = pOldList->pNext;
+		
+		pNewList->pRandom = (pOldList->pRandom==NULL)?NULL:pOldList->pRandom->pNext;
+		pOldList = pNewList->pNext;
+
+	}
+	//拆分链表
+	pOldList = head;
+	pNewHead = pOldList->pNext;
+	while (pOldList->pNext)
+	{
+		pNewList = pOldList->pNext;
+		pOldList->pNext = pNewList->pNext;
+		pOldList = pNewList;
+	}
+	return pNewHead;
+}
+//两个单链表的交集
+void Union(pList plist1, pList plist2)
+{
+	pNode p1 = plist1;
+	pNode p2 = plist2;
+	if (plist1 == NULL || plist2 == NULL)
+		return ;
+	if (p1->data < p2->data)
+	{
+		p1 = p1->pNext;
+	}
+	else if (p1->data>p2->data)
+	{
+		p2 = p2->pNext;
+	}
+	else
+	{
+		printf("%d  ",p1->data);
+		p1 = p1->pNext;
+		p2 = p2->pNext;
+	}
+	
 }
 
 
+//两个单链表的并集
 
+void Togeter(pList* plist1, pList plist2)
+{
+	assert(plist1&&plist2);
+	//思路：把2中每个元素单独拿出来与1中所有元素比较，
+	//如果把1遍历完都没有相同就把此元素链接1后，开始对2中的下一个元素进行相同操作，
+	//如果有相同就直接退出比较，开始对2中的下一个元素进行相同操作
+}
 
+//两个单链表的差集  plsit-plist2(去重)
+void Difference(pList* plist1, pList plist2)
+{
+	assert(plist1&&plist2);
+	//思路：先取1第一个元素跟2所有比较，如果有相同删掉此节点，
+	//如果没有相同就继续下一个结点跟2所有元素比较
+	pNode pa = (*plist1);
+	pNode pb = plist2;
+	pNode pre = NULL, pDel = NULL;
+	while (pa)
+	{
+		pb = plist2;
+		while (pb&&pa->data != pb->data)
+			pb = pb->pNext;
+		if (pb)
+		{
+			if (!pre)
+			{
+				(*plist1) = pa->pNext;
 
+			}
+			else
+			{
+				pre->pNext = pa->pNext;
 
+			}
+			pDel = pa;
+			pa = pa->pNext;
+			free(pDel);
+			pDel = NULL;
+		}
+		else
+		{
+			pre = pa;
+			pa = pa->pNext;
+		}
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
