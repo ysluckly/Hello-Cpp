@@ -1,6 +1,6 @@
 # Learning
 
-Some Treasure of C/C++/数据结构/Linux！！！
+Some Treasures of C/C++/数据结构/Linux！！！
 
 My blog link ：
 
