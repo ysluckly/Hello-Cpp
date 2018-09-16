@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "【剑指offer】之每日六题9.14", "【剑指offer】集\【剑指offer】集.vcxproj", "{639C2A17-23CD-4CB6-94F7-17B75E9C74F7}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "【剑指offer】之每日六题9.15", "【剑指offer】之每日六题9.15\【剑指offer】之每日六题9.15.vcxproj", "{23A928DA-DD30-473E-8A18-5C1A0BE92E9E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{639C2A17-23CD-4CB6-94F7-17B75E9C74F7}.Debug|Win32.ActiveCfg = Debug|Win32
+		{639C2A17-23CD-4CB6-94F7-17B75E9C74F7}.Debug|Win32.Build.0 = Debug|Win32
+		{639C2A17-23CD-4CB6-94F7-17B75E9C74F7}.Release|Win32.ActiveCfg = Release|Win32
+		{639C2A17-23CD-4CB6-94F7-17B75E9C74F7}.Release|Win32.Build.0 = Release|Win32
+		{23A928DA-DD30-473E-8A18-5C1A0BE92E9E}.Debug|Win32.ActiveCfg = Debug|Win32
+		{23A928DA-DD30-473E-8A18-5C1A0BE92E9E}.Debug|Win32.Build.0 = Debug|Win32
+		{23A928DA-DD30-473E-8A18-5C1A0BE92E9E}.Release|Win32.ActiveCfg = Release|Win32
+		{23A928DA-DD30-473E-8A18-5C1A0BE92E9E}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
