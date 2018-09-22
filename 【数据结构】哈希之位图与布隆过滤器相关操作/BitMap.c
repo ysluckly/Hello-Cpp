@@ -9,7 +9,7 @@ void BitMapInit(BitMap* pbm, size_t len)
 	// 假如len为25,25/8=4，但是要5个字节才能存的下
 	pbm->bit = (char*)malloc(((len>>3)+1));
 	assert(pbm->bit);
-	memset(pbm->bit,0, (len>>3)+1);
+	memset(pbm->bit,0, sizeof((len>>3)+1));
 	pbm->N = len;
 
 }
@@ -20,18 +20,18 @@ void BitMapDestroy(BitMap* pbm)
 	free(pbm->bit);
 	pbm->bit = NULL;
 	pbm->N = 0;
-
+	printf("销毁成功\n");
 }
 
 //位图
-void BitMapSet(BitMap* pbm, size_t x)
+void BitMapSet(BitMap* pbm, int x)
 {
 	assert(pbm);
 	int index = x >> 3;
 	int num = x % 8;
 	pbm->bit[index] |= (1<<num);
 }
-void BitMapReset(BitMap* pbm, size_t x)
+void BitMapReset(BitMap* pbm, int x)
 {
 	assert(pbm);
 	int index = x >> 3;
@@ -39,12 +39,12 @@ void BitMapReset(BitMap* pbm, size_t x)
 	pbm->bit[index] &= ~(1<<num);
 }
 
-int BitMapTest(BitMap* pbm, size_t x)
+int BitMapTest(BitMap* pbm, int x)
 {
 	assert(pbm);
 	int index = x >> 3;
 	int num = x % 8;
-	return pbm->bit[index]&(1<<num) == 1;
+	return (pbm->bit[index]&(1<<num)) == 1;
 }
 void TestBitMap()
 {
@@ -60,7 +60,6 @@ void TestBitMap()
 
 	BitMapReset(&bm,78);
 	printf("   %d    ",BitMapTest(&bm,78));
-
 
 
 	BitMapDestroy(&bm);

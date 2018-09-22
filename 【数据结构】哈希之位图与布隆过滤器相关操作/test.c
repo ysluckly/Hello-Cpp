@@ -7,7 +7,8 @@
 int main()
 {
 	
-	TestBitMap();
+	//TestBitMap();
+	TestBloomFilter();
 	system("pause");
 	return 0;
 }

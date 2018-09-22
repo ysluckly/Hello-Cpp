@@ -15,9 +15,9 @@ typedef struct BitMapNode
 void BitMapInit(BitMap* pbm,size_t len);
 void BitMapDestroy(BitMap* pbm);
 
-void BitMapSet(BitMap* pbm,size_t x);
-void BitMapReset(BitMap* pbm,size_t x);
-int BitMapTest(BitMap* pbm,size_t x);
+void BitMapSet(BitMap* pbm, int x);
+void BitMapReset(BitMap* pbm, int x);
+int BitMapTest(BitMap* pbm, int x);
 void TestBitMap();
 
 
