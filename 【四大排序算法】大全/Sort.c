@@ -77,7 +77,7 @@ void SelectSort(int* arr, int n)
 		{
 			if (arr[i] < arr[min])
 				min = i;
-			if (arr[i]>arr[max])
+			if (arr[i] > arr[max])
 				max = i;
 		}
 
@@ -252,7 +252,7 @@ void QuickSort(int* arr, int begin, int end)
 	if (begin < end)
 	{
 		int ret = PartSort2(arr,begin,end);
-		QuickSort(arr,begin,ret);
+		QuickSort(arr,begin,ret-1);
 		QuickSort(arr,ret+1,end);
 
 	}
@@ -354,4 +354,37 @@ void Print(int* arr, int n)
 	}								    
 
 	printf("\n");
+}
+
+//¼ÆÊýÅÅÐò
+void CountSort(int* arr, int n)
+{
+	assert(arr);
+	int min = arr[0];
+	int max = arr[0];
+	for (int i = 0; i < n; i++)
+	{
+		if (arr[i]>max)
+			max = arr[i];
+		if (arr[i] < min)
+			min = arr[i];
+	}
+	int count = 0;
+	count = max - min + 1;
+
+	int* tmp = (int*)malloc(count*sizeof(int));
+	assert(tmp);
+	memset(tmp, 0, count*sizeof(int));
+	for (int i = 0; i < n; i++)
+	{
+		tmp[arr[i]]++;
+	}
+	int index = 0;
+	for (int i = 0; i < count; i++)
+	{
+		for (int j = 0; j < tmp[i]; j++)
+		{
+			arr[index++] = i + min;
+		}
+	}
 }

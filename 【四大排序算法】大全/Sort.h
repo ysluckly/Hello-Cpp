@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <stdlib.h>
 #include <string.h>
-
+/************************************   比较排序     ********************************/
 //插入排序
 //1.直接插入排序
 void InsertSort(int* arr,int n);
@@ -26,8 +26,12 @@ void BubbleSort(int* arr,int n);
 //2.快速排序
 void QuickSort(int* arr,int begin,int end);
 
-//归并排序
+//归并排序（可外部排序）
 void MergeSort(int* arr, int n);
 
+/************************************   非比较排序     ********************************/
+//计数排序
+void CountSort(int* arr, int n);
+ 
 
 #endif //__INSERTSORT_H__
