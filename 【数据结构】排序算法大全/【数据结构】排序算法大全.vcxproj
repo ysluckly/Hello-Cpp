@@ -11,9 +11,8 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{52FE3464-BB9F-4DD5-8F81-28A50A4E06FC}</ProjectGuid>
-    <RootNamespace>【四大排序算法】之插入排序</RootNamespace>
-    <ProjectName>【四大排序算法】大全</ProjectName>
+    <ProjectGuid>{97F78697-7419-46E0-AA1E-BC3FD5EA6176}</ProjectGuid>
+    <RootNamespace>【数据结构】排序算法大全</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
