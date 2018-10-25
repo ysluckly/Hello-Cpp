@@ -42,7 +42,7 @@
 //		return left + right;
 //	}
 //}
-
+//
 //namespace your
 //{
 //	int b = 2;
@@ -88,7 +88,7 @@
 //}
 
 //#include <iostream>
-////using namespace std; // std C++Â¿Ã¢ÂµÃ„ÃƒÃ¼ÃƒÃ»Â¿Ã•Â¼Ã¤
+////using namespace std; // std C++¿âµÄÃüÃû¿Õ¼ä
 //
 //// int swap = 10;
 ////swap
@@ -330,7 +330,7 @@ void Swap(int& x1, int& x2)
 //	int _age;
 //};
 //
-//// const enum inlineÃŒÃ¦Â´ÃºÂºÃª
+//// const enum inlineÌæ´úºê
 //int main()
 //{
 //	//int ret = Add(1, 2);
