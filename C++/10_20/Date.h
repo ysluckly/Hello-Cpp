@@ -14,22 +14,21 @@ public:
 	 
 	// 全缺省参数构造函数
 	Date(int year = 1997, int month = 11, int day = 4)
-		:_year(year)
+		:_year(year)	//初始化列表
 		, _month(month)
 		, _day(day)
 	{
 		//检查合法
 		if (year >= 0
-			&& _month > 0 && _month < 13
-			&& _day > 0 && _day <= GetMonthDay(year, month))
+			&& month > 0 && month < 13
+			&& day > 0 && day <= GetMonthDay(year, month))
 		{
-			_year = year;
-			_month = month;
-			_day = day;
+			cout <<"初始化ok！"<< endl;
 		}
 		else
 		{
 			cout << "Date Invalid" << endl;
+			exit(EXIT_FAILURE);
 		}
 	}
 	//析构函数

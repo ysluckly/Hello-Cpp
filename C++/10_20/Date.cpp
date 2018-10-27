@@ -76,7 +76,7 @@ Date Date::operator+(int day)
 {
 	Date ret(*this);
 
-	if (day<0)
+	/*if (day<0)
 		return ret - abs(day);
 	ret._day += day;
 
@@ -93,7 +93,10 @@ Date Date::operator+(int day)
 		{
 			_month += 1;
 		}
-	}
+	}*/
+	//改进：
+	ret += day;
+
 	return ret;
 }
 
@@ -127,7 +130,7 @@ Date Date::operator-(int day)
 {
 	Date ret(*this);
 
-	if (day < 0)
+	/*if (day < 0)
 		return ret + abs(day);
 	ret._day -= day;
 	while (ret._day <= 0)
@@ -144,7 +147,10 @@ Date Date::operator-(int day)
 		}
 		ret._day += GetMonthDay(ret._year,ret._month);
 
-	}
+	}*/
+	//改进:
+	ret -= day;
+
 	return ret;
 }
 Date& Date::operator-=(int day)
@@ -193,7 +199,7 @@ int Date::operator-(const Date& d)
 //通过判断月末与年末，对指定的月份 + 1或年份 + 1，并置新月份 = 1）
 Date& Date::operator++()// ++d => d.operator++(&d)
 {
-	_day++;
+	/*_day++;
 	if (_day > GetMonthDay(_year, _month))
 	{
 		_day -= GetMonthDay(_year, _month);
@@ -203,7 +209,10 @@ Date& Date::operator++()// ++d => d.operator++(&d)
 			_year++;
 			_month = 1;
 		}
-	}
+	}*/
+	//改进：
+	*this += 1;
+
 	return *this;
 
 }
@@ -212,7 +221,8 @@ Date& Date::operator++()// ++d => d.operator++(&d)
 Date Date::operator++(int)// d++ => d.operator(&d, 0)
 {
 	Date ret(*this);
-	_day++;
+
+	/*_day++;
 	if (_day > GetMonthDay(_year, _month))
 	{
 		_day -= GetMonthDay(_year, _month);
@@ -222,7 +232,10 @@ Date Date::operator++(int)// d++ => d.operator(&d, 0)
 			_year++;
 			_month = 1;
 		}
-	}
+	}*/
+	//改进：
+	*this += 1;
+
 	return ret;
 
 }
@@ -230,7 +243,7 @@ Date Date::operator++(int)// d++ => d.operator(&d, 0)
 //通过判断月末与年末，对指定的月份-1或年份-1，并置新月份=12）
 Date& Date::operator--() // --d 
 {
-	_day--;
+	/*_day--;
 	if (_day <= 0)
 	{
 		if (_month == 1)
@@ -243,13 +256,18 @@ Date& Date::operator--() // --d
 			_month--;
 		}
 		_day += GetMonthDay(_year, _month);
-	}
+	}*/
+	//改进：
+	*this -= 1;
+
 	return *this;
 }
 //（与前置--类似，可以使用拷贝构造函数构造一个临时的函数，最终返回临时函数即可）
 Date Date::operator--(int) // d--
 {
 	Date ret(*this);
+
+	/*_day--;
 	if (_day <= 0)
 	{
 		if (_month == 1)
@@ -262,7 +280,10 @@ Date Date::operator--(int) // d--
 			_month--;
 		}
 		_day += GetMonthDay(_year, _month);
-	}
+	}*/
+	//改进
+	*this -= 1;
+
 	return ret;
 }
 // 重载输出 <<
