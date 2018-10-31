@@ -1,0 +1,33 @@
+﻿生成启动时间为 2018/10/31 15:36:52。
+     1>项目“F:\HomeWork\比特_C++\【设计模式】原则\【设计模式】原则\【设计模式】原则.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "依赖倒桩-电脑组装案例.cpp" "依赖倒转原则.cpp" "开闭原则.cpp"
+         开闭原则.cpp
+         依赖倒转原则.cpp
+     1>f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(41): error C2061: 语法错误: 标识符“Car”
+     1>f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(59): error C3867: “Car::run”:  函数调用缺少参数列表；请使用“&Car::run”创建指向成员的指针
+     1>f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(69): error C3867: “Car::run”:  函数调用缺少参数列表；请使用“&Car::run”创建指向成员的指针
+     1>f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(107): error C2259: “zhangsan”: 不能实例化抽象类
+                 由于下列成员: 
+                 “void Driver::drive(void)”: 是抽象的
+                 f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(41) : 参见“Driver::drive”的声明
+     1>f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(108): error C2660: “Driver::drive”: 函数不接受 1 个参数
+     1>f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(113): error C2374: “b”: 重定义；多次初始化
+                 f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(106) : 参见“b”的声明
+     1>f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(114): error C2374: “d”: 重定义；多次初始化
+                 f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(107) : 参见“d”的声明
+     1>f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(114): error C2259: “lisi”: 不能实例化抽象类
+                 由于下列成员: 
+                 “void Driver::drive(void)”: 是抽象的
+                 f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒转原则.cpp(41) : 参见“Driver::drive”的声明
+         依赖倒桩-电脑组装案例.cpp
+     1>f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒桩-电脑组装案例.cpp(79): error C2259: “interCard”: 不能实例化抽象类
+                 由于下列成员: 
+                 “void Card::dispaly(void)”: 是抽象的
+                 f:\homework\比特_c++\【设计模式】原则\【设计模式】原则\依赖倒桩-电脑组装案例.cpp(16) : 参见“Card::dispaly”的声明
+         正在生成代码...
+     1>已完成生成项目“F:\HomeWork\比特_C++\【设计模式】原则\【设计模式】原则\【设计模式】原则.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:03.33
