@@ -1,11 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
-#include <iostream>
-#include <Windows.h> 
-#include <vector>
-#include <algorithm>
-using namespace std;
-
+#include "STL.h"
 //初识STL
 void test01()
 {
@@ -114,8 +109,9 @@ void test04()
 	cout << n << endl;
 }
 
-///////////////////////////容器
-//string
+
+
+
 
 int main()
 {
@@ -123,11 +119,34 @@ int main()
 	//test01();
 	//test02();
 	//test03();
-
-////STL容器基本原理
 	//test04();
 
+////STL容器基本原理
+///string
+	//test1();
+	//test2();
+	//test3();
+	//test4();
+	//test5();
+	//test6();
+	//test7();
+///vector
+	//test8();
+	//test9();
+	//test11();
+	//test12();
+	//test13();
+	//test14();
+	//test15();
 
+///deque
+	//test16();
+	//test17();
+	//test18();
+	//test19();
+	test20();
+
+ 
 	system("pause");
 	return 0;
 }
