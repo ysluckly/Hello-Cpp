@@ -2,9 +2,12 @@
 
 #include <iostream>
 #include <Windows.h> 
-#include <vector>
-#include <string>
-#include <deque>
+#include <vector>  //动态数组
+#include <string>  //字符串
+#include <deque>   //双向动态数组
+#include <stack>   //栈
+#include <queue>   //队列
+#include <list>	   //双向链表
 #include <algorithm>
 using namespace std;
 
@@ -38,4 +41,24 @@ void test17();
 void test18();
 void test19();
 void test20();
+//stack
+void test21();
+void test22();
+void test23();
+void test24();
+//queue
+void test25();
+void test26();
+void test27();
+//list
+void test28();
+void test29();
+void test30();
+void test31();
+void test32();
+
+
+
+
+
 

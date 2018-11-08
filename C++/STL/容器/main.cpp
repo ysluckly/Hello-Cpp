@@ -144,7 +144,23 @@ int main()
 	//test17();
 	//test18();
 	//test19();
-	test20();
+	//test20();
+//stack
+	/*test21();
+	test22();
+	test23();
+	test24();*/
+//queue
+	//test25();
+	//test26();
+	//test27();
+//list
+
+	//test28();
+	//test29();
+	//test30();
+	//test31();
+	test32();
 
  
 	system("pause");
