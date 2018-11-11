@@ -1,0 +1,16 @@
+﻿生成启动时间为 2018/11/11 20:19:23。
+     1>项目“F:\HomeWork\比特_C++\11_11\11_11\11_11.vcxproj”在节点 2 上(Build 个目标)。
+     1>ClCompile:
+         E:\VS2013\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt string.cpp test.cpp
+         string.cpp
+     1>f:\homework\比特_c++\11_11\11_11\string.h(77): error C2955: “std::iterator”: 使用 类 模板 需要 模板 参数列表
+                 e:\vs2013\vc\include\xutility(338) : 参见“std::iterator”的声明
+     1>f:\homework\比特_c++\11_11\11_11\string.cpp(11): warning C4002: “min”宏的实参太多
+         正在生成代码...
+         正在跳过...(未检测到相关更改)
+         test.cpp
+     1>已完成生成项目“F:\HomeWork\比特_C++\11_11\11_11\11_11.vcxproj”(Build 个目标)的操作 - 失败。
+
+生成失败。
+
+已用时间 00:00:03.07
