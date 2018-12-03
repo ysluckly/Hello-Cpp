@@ -45,12 +45,20 @@ void TestQueue()
 	cout << q.Front() << endl;
 	cout << q.Back() << endl;
 
-}
+} 
 int main()
 {
 
 	//TestStack();
-	TestQueue();
+	//TestQueue();	
+	priority_queue<int, vector<int>, Less<int>> pq;//´ó¶Ñ
+	pq.push(2);
+	pq.push(9);
+	pq.push(3);
+
+
+
+
 	system("pause");
 	return 0;
 }
